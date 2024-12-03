@@ -1,4 +1,6 @@
 use std::fs;
+#[allow(dead_code)]
+#[allow(unused_parens)]
 
 pub fn main(){
     let thing = fs::read_to_string("inputs/day2").unwrap();
