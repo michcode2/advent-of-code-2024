@@ -4,8 +4,8 @@ mod thing2a;
 mod thing2b;
 mod thing3a;
 mod thing3b;
-mod thing4;
+mod thing4b;
 
 fn main() {
-    thing4::main();
+    thing4b::main();
 }

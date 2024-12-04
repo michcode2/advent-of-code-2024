@@ -1,4 +1,5 @@
 use std::fs;
+#[allow(dead_code)]
 
 pub fn main(){
     let input_string = fs::read_to_string("inputs/day4").unwrap();
@@ -9,18 +10,11 @@ pub fn main(){
         for y in 0..grid[0].len(){
             for dx in -1..=1 {
                 for dy in -1..=1 {
-                    //println!("({},{})   ({},{})",x, y, dx, dy);
                     total += check_here(x, y, &target_string, &grid, 0, dx, dy);
                 }
             }
         }
     }
-    /*for row in grid{
-        for char in row {
-            print!("{}", char);
-        }
-        println!();
-    }*/
     println!("{}", total);
 }
 
@@ -32,7 +26,6 @@ fn check_here(x: usize, y: usize, target: &Vec<char>, grid: &Vec<Vec<char>>, ind
     }
 
     if index == 3 {
-        println!("{},{}", x, y);
     }
 
     if grid[x][y] == target[index] {
@@ -43,7 +36,6 @@ fn check_here(x: usize, y: usize, target: &Vec<char>, grid: &Vec<Vec<char>>, ind
             if index == 3 {
                 return 1;
             }
-            let (width, height) = (grid.len(), grid[0].len());
             return 0;
         }
         return check_here(next_x, next_y, target, grid, index + 1, dx, dy);
