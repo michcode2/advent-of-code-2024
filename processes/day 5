@@ -1,0 +1,6 @@
+for each line in the file put it in rules or photos
+go over each rule and put them in a tuple 
+
+for a given set of photos, set up an array called printed
+for each photo, go over each tuple and check if either element of the tuple is the current photo, check each other photo against the rule
+for each element in that list, check each element of the printed array and see if they correspond
