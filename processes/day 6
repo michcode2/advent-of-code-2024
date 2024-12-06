@@ -1,0 +1,6 @@
+have a direction enum
+
+store the current x, y in a list
+if position + direction isnt #
+otherwise increment direction
+position += 1
