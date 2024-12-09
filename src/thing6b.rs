@@ -1,6 +1,7 @@
 use std::fs;
 use std::sync::mpsc;
 use threadpool::ThreadPool;
+#[allow(dead_code)]
 
 pub fn main() {
     let input_string = fs::read_to_string("inputs/day6").unwrap();

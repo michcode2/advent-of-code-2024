@@ -1,0 +1,6 @@
+for 2 digits, there are two sign combox [[+], [*]]
+for 3 digits, there are four sign combos [[+, +], [+, *], [*, +], [*, *]]
+
+--------
+ for 2 digits there are 3 [[+], [*], [||]]
+ for 3 digits there are 9 [[+, +], [+, *], [+, ||], [*, +], [*, *], [*, ||], [||, +], [||, +], [||, *], [||, ||]]

@@ -1,0 +1,4 @@
+for each antenna in the list, iterate over every other antenna
+if they dont share a frequency, stop processing
+antinode at 2x_1 - x_2, 2y_1-y_2 and 2x_2 - x_1, 2y_2-y_1
+put it in a vector or something

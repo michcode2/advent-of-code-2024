@@ -1,5 +1,6 @@
 use std::fs;
 use rand::prelude::*;
+#[allow(dead_code)]
 
 pub fn main() {
     let input_string = fs::read_to_string("inputs/day7").unwrap();
@@ -36,7 +37,7 @@ fn does_line_work(mut input: Vec<usize>) -> Option<usize> {
         }
         loop {
             current_attempt = vec![];
-            for i in 0..input.len() - 1{
+            for _ in 0..input.len() - 1{
                 current_attempt.push(rand::random());
             }
             //println!("{:?}\n{:?}", current_attempt, attempted);

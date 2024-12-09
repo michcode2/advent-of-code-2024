@@ -11,7 +11,10 @@ mod thing5b;
 mod thing6a;
 mod thing6b;
 mod thing7a;
+mod thing7b;
+mod thing8a;
+mod thing9a;
 
 fn main() {
-    thing7a::main();
+    thing9a::main();
 }

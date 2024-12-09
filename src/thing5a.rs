@@ -1,4 +1,5 @@
 use std::fs;
+#[allow(dead_code)]
 
 pub fn main() {
     let input_string = fs::read_to_string("inputs/day5").unwrap();
