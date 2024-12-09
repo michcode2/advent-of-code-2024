@@ -3,7 +3,7 @@ use std::fs;
 
 pub fn main() {
     let input_string = fs::read_to_string("inputs/day6").unwrap();
-    let mut grid_str = input_string.lines().map(|line| line.chars().map(|c|c.to_string()).collect::<Vec<String>>()).collect::<Vec<Vec<String>>>();
+    let grid_str = input_string.lines().map(|line| line.chars().map(|c|c.to_string()).collect::<Vec<String>>()).collect::<Vec<Vec<String>>>();
     let mut direction = Direction::Up;
     let mut visited_places = vec![];
     

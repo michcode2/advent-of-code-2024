@@ -4,17 +4,16 @@ use std::fs;
 pub fn main(){
     let input_string = fs::read_to_string("inputs/day4").unwrap();
     let grid: Vec<Vec<char>> = input_string.lines().map(|line| line.chars().collect()).collect();
-    let target_string:Vec<char> = "XMAS".chars().collect();
     let mut total = 0;
     for x in 1..grid.len()-1 {
         for y in 1..grid[0].len()-1 {
-            total += check_here(x, y, &target_string, &grid, 0);
+            total += check_here(x, y, &grid);
         }
     }
     println!("{}", total);
 }
 
-fn check_here(x: usize, y: usize, target: &Vec<char>, grid: &Vec<Vec<char>>, index: usize) -> usize {
+fn check_here(x: usize, y: usize, grid: &Vec<Vec<char>>) -> usize {
     if "A" != grid[x][y].to_string() {
         return 0;
     }

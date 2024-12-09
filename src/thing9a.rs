@@ -1,4 +1,5 @@
-use std::{fmt::{Debug, Display}, fs, ops::Index};
+use std::{fmt::Display, fs};
+#[allow(dead_code)]
 
 pub fn main() {
     let input_string = fs::read_to_string("inputs/day9").unwrap();
