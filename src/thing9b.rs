@@ -118,22 +118,13 @@ fn move_to_first_space(mut chunks: Vec<FileSpace>) -> Vec<FileSpace> {
         //if let None = chunks.clone().iter().position(|x| x.include_in_search == false) {
         //    break;
         //}
-        //println!("{:?}", chunks);
     }
     println!("{:?}", chunks);
     return chunks;
 }
 
-fn insert(original: Vec<FileSpace>, index: usize, new_space: FileSpace) -> Vec<FileSpace> {
-    let mut new = original[..index].to_vec();
-    let mut old = original[index..].to_vec();
-    let mut space = vec![new_space];
-    new.append(&mut space);
-    new.append(&mut old);
-    new
-}
-
 fn calculate_checksum(input: Vec<FileSpace>) {
+    println!("{:?}", input);
     let mut place = 0;
     let mut total = 0;
     for space in input {

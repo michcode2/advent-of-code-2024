@@ -1,0 +1,7 @@
+find a point 0
+give it a trailhead id
+go around each of the cardinal directions
+if there is 1, add to a queue of things to check, along with the trailhead id 
+go over the whole board once to find the trailheads
+go over the queue and look for the next number, if its there add it to the queue
+if there is a 9, add one to the trailhead counter
