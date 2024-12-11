@@ -1,5 +1,5 @@
 use std::{fs, thread};
-use rand::{distributions::Uniform, prelude::*};
+//use rand::{distributions::Uniform, prelude::*};
 use std::sync::mpsc;
 #[allow(dead_code)]
 
@@ -52,16 +52,18 @@ fn does_line_work(mut input: Vec<usize>) -> Option<usize> {
     let target = input.pop().unwrap();
     let mut attempted: Vec<Vec<Operator>> = vec![];
     let mut current_attempt: Vec<Operator>;
-    let mut rng = thread_rng();
-    let distribution = Uniform::from(0..=2);
+    //let mut rng = thread_rng();
+    //let distribution = Uniform::from(0..=2);
     loop {
+        //println!("{}, {}", attempted.len(), 3_usize.pow((input.len() - 1) as u32));
         if attempted.len() == 3_usize.pow((input.len() - 1) as u32) {
             return None;
         }
         loop {
             current_attempt = vec![];
             for _ in 0..input.len() - 1{
-                match distribution.sample(&mut rng){
+
+                match fastrand::usize(0..=2) {
                     0 => current_attempt.push(Operator::Add),
                     1 => current_attempt.push(Operator::Times),
                     2 => current_attempt.push(Operator::Concatenate),
@@ -90,12 +92,15 @@ fn does_line_work(mut input: Vec<usize>) -> Option<usize> {
                     let string_1 = total.to_string();
                     let string_2 = input[i].to_string();
 
-                    if let Ok(value) = (string_1 + &string_2).parse::<usize>() {
+                    if let Ok(value) = (string_1.clone() + &string_2).parse::<usize>() {
                         total = value;
                     } else {
                         break;
                     }
                 }
+            }
+            if total > target{
+                break;
             }
         }
         if total == target {

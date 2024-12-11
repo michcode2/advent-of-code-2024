@@ -1,7 +1,7 @@
 use std::fs;
 
 pub fn main() {
-    let input_string = fs::read_to_string("inputs/test").unwrap();
+    let input_string = fs::read_to_string("inputs/day10").unwrap();
     let grid = input_string.lines()
         .map(|line| line.chars()
             .map(|c| c.to_string().parse::<usize>().unwrap_or(10)).collect::<Vec<_>>()
@@ -47,9 +47,9 @@ fn next_from_queue(grid: &Vec<Vec<usize>>, search: &mut SearchState) {
 
         if grid[new_y][new_x] == next_number {
             if next_number == 9 {
-                if search.trailheads[current.id].contains(&(new_x, new_y)) {
-                    continue;
-                }
+                //if search.trailheads[current.id].contains(&(new_x, new_y)) {
+                //    continue;
+                //}
                 println!("{new_x},{new_y}");
                 search.trailheads[current.id].push((new_x, new_y));
                 continue;
