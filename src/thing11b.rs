@@ -1,25 +1,21 @@
-use std::fs;
+use std::{fs, path::Display};
 
 pub fn main(){
-    let mut input: Vec<_> = fs::read_to_string("inputs/day11").unwrap().split(" ").map(|n| n.parse::<usize>().unwrap()).collect();
-    for i in 0..75 {
-        println!("{i}");
-        input = blink(&input);
+    let mut input: Vec<_> = fs::read_to_string("inputs/test").unwrap().split(" ").map(|n| n.parse::<usize>().unwrap()).collect();
+    for i in 0..25 {
+        write_cache_value(&input);
     }
     println!("{}", input.len());
 }
+//
+//fn blink_disk (input: &Vec<usize>) {
+//    let output = vec![];
 
-fn blink(input: &Vec<usize>) -> Vec<usize> {
-    let mut output = vec!();
-    let parsed:Vec<_> = input.iter().map(|&x| parse_stone(x)).collect();
+//    for 
+//}
 
-    for mut v in parsed {
-        v.reverse();
-        while v.len() > 0 {
-            output.push(v.pop().unwrap());
-        }
-    }
-    output
+fn write_cache_value(toobig: &Vec<usize>) {
+
 }
 
 fn parse_stone(value: usize) -> Vec<usize> {
