@@ -1,0 +1,6 @@
+when a field is found, find the max and min in each axis to define a bounding box
+find the area of the bounding box and subtract it from the known area to get the number of other crops
+find the perimeter of the bounding box
+the bounding box is now the mesh
+go over each crop in the mesh, if it is the wrong type then 
+    find the number of neighbours in the mesh, the perimeter goes up by that much

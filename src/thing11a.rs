@@ -1,4 +1,5 @@
 use std::fs;
+#[allow(dead_code)]
 
 pub fn main(){
     let mut input: Vec<_> = fs::read_to_string("inputs/day11").unwrap().split(" ").map(|n| n.parse::<usize>().unwrap()).collect();

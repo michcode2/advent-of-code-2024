@@ -39,5 +39,30 @@ fn start_from_here(mut grid: &mut Vec<Vec<String>>, x: usize, y: usize) {
         }
     }
     print!("{}", positions_near_here.len());
+}
 
+fn perimeter_of_field(full_field: &Vec<Vec<String>>, crop_patch: &Vec<(usize, usize)>){
+    let mut dims = vec![];
+
+    for i in 0..2 {
+        let single_direction = crop_patch.iter().map(|point| point.0).collect::<Vec<usize>>();
+        let biggest = single_direction.iter().max().unwrap();
+        let smallest = single_direction.iter().min().unwrap();
+        let dl = biggest - smallest;
+        dims.push(dl);
+    }
+    let perimeter = 2 * (dims[0] + dims[1]);
+    let area = dims[0] * dims[1];
+
+    let mut mesh = Mesh {
+        perimeter,
+        area_field: area,
+    };
+
+
+}
+
+struct Mesh {
+    perimeter: usize,
+    area_field: usize,
 }

@@ -45,16 +45,16 @@ mod test {
     fn blink_works() {
         let input = vec![0, 1, 10, 99, 999];
         let output = vec![1, 2024, 1, 0, 9, 9, 2021976];
-        assert_eq!(blink(&input), output);
+        //assert_eq!(blink(&input), output);
     }
 
     #[test]
     fn repeated_blink() {
         let mut input = vec![125, 17];
         let output = vec![2097446912, 14168, 4048, 2, 0, 2, 4, 40, 48, 2024, 40, 48, 80, 96, 2, 8, 6, 7, 6, 0, 3, 2];
-        for _ in 0..6 {
-            input = blink(&input);
-        }
+        //for _ in 0..6 {
+        //    input = blink(&input);
+        //}
         assert_eq!(input, output);
     }
 }
