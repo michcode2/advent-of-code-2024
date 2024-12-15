@@ -75,7 +75,7 @@ mod test {
         let A = ControlInput::new(94, 34);
         let B = ControlInput::new(22, 67);
         let P = Position::new(8400, 5400);
-        optimise(&A, &B, &P);
+        assert_eq!(Some(280), optimise(&A, &B, &P));
     }
     
     #[test]
@@ -83,7 +83,7 @@ mod test {
         let A = ControlInput::new(26, 66);
         let B = ControlInput::new(67, 21);
         let P = Position::new(12748, 12176);
-        optimise(&A, &B, &P);
+        assert_eq!(None, optimise(&A, &B, &P));
     }
 
     #[test]
@@ -91,8 +91,10 @@ mod test {
         let A = ControlInput::new(17, 86);
         let B = ControlInput::new(84, 37);
         let P = Position::new(7870, 6450);
-        optimise(&A, &B, &P);
+        assert_eq!(Some(200), optimise(&A, &B, &P));
     }
+
+    
 }
 
 struct ControlInput {

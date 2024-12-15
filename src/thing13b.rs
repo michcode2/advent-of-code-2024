@@ -45,11 +45,33 @@ pub fn main() {
 
 fn optimise(A: &ControlInput, B: &ControlInput, P: &Position) -> Option<usize> {
     let mut combos: Vec<(usize, usize)> = vec!();
-    let mut alpha = 0;
-    let tolerance = 1000;
+    let tolerance = 1000000;
 
-    let alpha_est = A.detection(P.x - tolerance, P.y - tolerance);
+    let detected = A.detection(P.x - tolerance, P.y - tolerance);
     
+    let mut alpha = detected.0.min(detected.1);
+    
+    loop {
+        let target: Position;
+        if let Some(retval) = P.subtract(&A.number_of_times(alpha)) {
+            target = retval;
+        } else {
+            println!("subtraction negative");
+            break;
+        }
+        
+        if let Some(beta) = B.does_it_work(&target) {
+            combos.push((alpha, beta));
+        }
+        if target.x < 0 || target.y < 0 {
+            break;
+        }
+        println!("{alpha}");
+        alpha += 1;
+    }
+    if combos.len() == 0 {
+        return None;
+    }
     return Some(combos[0].0 * 3 + combos[0].1);
 }
 
@@ -61,24 +83,32 @@ mod test {
     fn test_case_1() {
         let A = ControlInput::new(94, 34);
         let B = ControlInput::new(22, 67);
-        let P = Position::new(8400, 5400);
-        optimise(&A, &B, &P);
+        let P = Position::new(10000000000000 + 8400, 10000000000000 + 5400);
+        assert_eq!(None, optimise(&A, &B, &P));
     }
     
     #[test]
     fn test_case_2() {
         let A = ControlInput::new(26, 66);
         let B = ControlInput::new(67, 21);
-        let P = Position::new(12748, 12176);
-        optimise(&A, &B, &P);
+        let P = Position::new(10000000000000 + 12748, 10000000000000 + 12176);
+        assert_ne!(None, optimise(&A, &B, &P));
     }
 
     #[test]
     fn test_case_3() {
         let A = ControlInput::new(17, 86);
         let B = ControlInput::new(84, 37);
-        let P = Position::new(7870, 6450);
-        optimise(&A, &B, &P);
+        let P = Position::new(10000000000000 + 7870, 10000000000000 + 6450);
+        assert_eq!(None, optimise(&A, &B, &P));
+    }
+    
+    #[test]
+    fn test_case_4() {
+        let A = ControlInput::new(69, 23);
+        let B = ControlInput::new(27, 71);
+        let P = Position::new(10000000000000 + 18641, 10000000000000 + 10279);
+        assert_ne!(None, optimise(&A, &B, &P));
     }
 }
 
@@ -99,7 +129,7 @@ impl ControlInput {
         let num_x = target_pos.x as f64 / self.dx as f64;
         let num_y = target_pos.y as f64 / self.dy as f64;
 
-        if num_x == num_y && num_x.round() - num_x < 1e6 {
+        if num_x == num_y && num_x.round() - num_x < 1e-3 {
             return Some(num_x as usize);
         }
 
