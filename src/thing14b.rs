@@ -62,7 +62,7 @@ fn find_entropy(num_steps: isize, mut guards: Vec<Guard>, file: String) {
         }
     }
 
-    if entropy > 700 || entropy < 200{
+    if entropy > 800 || entropy < 200{
         display(&guards, (grid_x as usize, grid_y as usize), num_steps);
     }
 }
